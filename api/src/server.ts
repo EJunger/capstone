@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createConnection } from 'typeorm';
@@ -43,7 +44,7 @@ const main = async () => {
   });
 
   app.listen(PORT, () => {
-    console.log(`Server listening on http://${HOST}:${PORT}`);
+    console.log(`Server live on http://${HOST}:${PORT}`);
   });
 };
 

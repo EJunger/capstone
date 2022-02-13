@@ -5,6 +5,7 @@
   "username": "postgres",
   "password": "postgres",
   "database": "capstone",
+  "synchronize": true,
   "entities": ["dist/models/*.js"],
   "migrations": ["dist/migrations/*.js"]
 }
