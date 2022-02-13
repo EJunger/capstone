@@ -3,7 +3,7 @@ import express from 'express';
 import { createConnection } from 'typeorm';
 import { buildSchema } from 'type-graphql';
 import { User } from './models/User';
-import { UserResolver } from './Controllers/user';
+import { UserResolver } from './resolvers/user';
 import cors from 'cors';
 
 const PORT = 4000;
