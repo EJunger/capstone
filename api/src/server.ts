@@ -5,6 +5,8 @@ import { buildSchema } from 'type-graphql';
 import { User } from './models/User';
 import { UserResolver } from './resolvers/user';
 import cors from 'cors';
+import { StudentResolver } from './resolvers/student';
+import { Student } from './models/Student';
 
 const PORT = 4000;
 const HOST = 'localhost';
@@ -17,7 +19,7 @@ const main = async () => {
     password: 'postgres',
     logging: true,
     synchronize: true,
-    entities: [User],
+    entities: [User, Student],
   });
 
   const app = express();
@@ -31,7 +33,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: [UserResolver, StudentResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({ req, res }),

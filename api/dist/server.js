@@ -10,6 +10,8 @@ const type_graphql_1 = require("type-graphql");
 const User_1 = require("./models/User");
 const user_1 = require("./resolvers/user");
 const cors_1 = __importDefault(require("cors"));
+const student_1 = require("./resolvers/student");
+const Student_1 = require("./models/Student");
 const PORT = 4000;
 const HOST = 'localhost';
 const main = async () => {
@@ -20,7 +22,7 @@ const main = async () => {
         password: 'postgres',
         logging: true,
         synchronize: true,
-        entities: [User_1.User],
+        entities: [User_1.User, Student_1.Student],
     });
     const app = (0, express_1.default)();
     app.use((0, cors_1.default)({
@@ -29,7 +31,7 @@ const main = async () => {
     }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: await (0, type_graphql_1.buildSchema)({
-            resolvers: [user_1.UserResolver],
+            resolvers: [user_1.UserResolver, student_1.StudentResolver],
             validate: false,
         }),
         context: ({ req, res }) => ({ req, res }),
