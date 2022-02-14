@@ -17,11 +17,23 @@ export class User extends BaseEntity {
 
   @Field()
   @Column({ unique: true })
-  username!: string;
+  fName!: string;
+
+  @Field()
+  @Column({ unique: true })
+  lName!: string;
 
   @Field()
   @Column({ unique: true })
   email!: string;
+
+  @Field()
+  @Column({type: 'varchar', length:150})
+  address!: string;
+
+  @Field()
+  @Column()
+  phone!: number;
 
   @Column()
   password!: string;
