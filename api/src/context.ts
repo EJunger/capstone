@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-export type MyContext = {
+export type Context = {
   req: Request;
   res: Response;
 };
