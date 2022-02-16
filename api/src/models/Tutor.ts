@@ -1,10 +1,10 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
-  availabilityColumn,
+  CreateDateColumn,
   Column,
   Entity,
   PrimaryGeneratedColumn,
-} from from 'typeorm';
+} from 'typeorm';
 import { User } from './User';
 
 @ObjectType()
@@ -32,7 +32,7 @@ export class Tutor extends User {
 
     // Tutor Availability
     @Field(() => String)
-    @availabilityColumn()
+    @CreateDateColumn()
     availability = new Date();
 
     // Tutor Sessions - Putting sessions on pause for now
