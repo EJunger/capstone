@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
 const apollo_server_express_1 = require("apollo-server-express");
 const express_1 = __importDefault(require("express"));
 const typeorm_1 = require("typeorm");
@@ -39,7 +40,7 @@ const main = async () => {
         cors: false,
     });
     app.listen(PORT, () => {
-        console.log(`Server listening on http://${HOST}:${PORT}`);
+        console.log(`Server live on http://${HOST}:${PORT}`);
     });
 };
 main().catch((err) => {

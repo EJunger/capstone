@@ -25,6 +25,7 @@ class UserResponse {
 
 @Resolver()
 export class UserResolver {
+  //Register User
   @Mutation(() => UserResponse)
   async register(
     @Arg('options') options: UserSchema,
@@ -42,6 +43,7 @@ export class UserResolver {
         .insert()
         .into(User)
         .values({
+          //TODO add missing fields
           username: options.username,
           email: options.email,
           password: hashedPassword,
