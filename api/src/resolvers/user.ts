@@ -1,9 +1,8 @@
-// import { User } from '../models/User';
-import { Context } from 'src/context';
-import { User } from 'src/models/User';
+import { Context } from '../context';
+import { User } from '../models/User';
 import argon2 from 'argon2';
 import { registerValidation } from '../utils/validation';
-import { UserSchema } from 'src/utils/inputs';
+import { UserSchema } from '../utils/inputs';
 import { Arg, Ctx, Field, Mutation, ObjectType, Resolver } from 'type-graphql';
 import { getConnection } from 'typeorm';
 
@@ -29,7 +28,7 @@ export class UserResolver {
   @Mutation(() => UserResponse)
   async register(
     @Arg('options') options: UserSchema,
-    @Ctx() { req }: Context
+    @Ctx() {}: Context //TODO replace { req }
   ): Promise<UserResponse> {
     const errors = registerValidation(options);
     if (errors) {
@@ -45,6 +44,10 @@ export class UserResolver {
         .values({
           //TODO add missing fields
           username: options.username,
+          fName: options.fName,
+          lName: options.lName,
+          address: options.address,
+          phone: options.phone,
           email: options.email,
           password: hashedPassword,
         })
@@ -58,11 +61,11 @@ export class UserResolver {
           errors: [
             {
               field: 'username',
-              message: 'that username already exists',
+              message: 'That username already exists',
             },
             {
               field: 'email',
-              message: 'that email is already in use',
+              message: 'That email is already in use',
             },
           ],
         };
