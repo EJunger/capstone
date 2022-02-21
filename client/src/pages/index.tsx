@@ -1,3 +1,4 @@
+import Greeting from "../components/Greeting";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 
@@ -6,6 +7,7 @@ const Index = () => {
         <>
             <Nav/>
             <Header/>
+            <Greeting/>
         </>
     )
 }

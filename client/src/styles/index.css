@@ -56,6 +56,9 @@ h2 {
 .navItem {
   text-decoration: none;
 }
+
+
+
 /*========Header=========*/
 #landing {
   background-color: rgba(232, 241, 241, 0.1);
@@ -69,6 +72,10 @@ header {
 
 
 
+section{
+  display: block;
+  height: 560px;
+}
 
 .header-container{
   height: 560px;
@@ -178,4 +185,79 @@ header {
 .btn1:hover{
   color: black;
   background-color: rgb(0, 140, 255);
+}
+
+
+/*========Greeting=========*/
+
+#greet-container{
+  margin-top: 25px;
+}
+
+#greet-container .greet-content{
+  text-align: center;
+  border-radius: 8px;
+  padding: 35px 25px;
+  background-image: linear-gradient(to top,#f8f9fa 0,#fcfcfd 100%);
+  border: 1px solid #f8f9fa;
+  color: #758191;
+  position: relative;
+  transition: border-color .5s ease;
+}
+
+.greet-title-item{
+  font-size: 50x;
+}
+
+.greet-title-subitem{
+  font-size: 35x;
+}
+
+.greet-subjects{
+  position: relative;
+  text-align: center;
+  height: 50px;
+  overflow: hidden;
+}
+
+.greet-subjects-wrapper{
+  height: 100%;
+  animation: move 15s ease-in-out infinite alternate;
+}
+
+@keyframes move {
+  12.5%{
+    transform: translateY(-50px);
+  }
+  25%{
+    transform: translateY(-100px);
+  }
+  37.5%{
+    transform: translateY(-150px);
+  }
+  50%{
+    transform: translateY(-200px);
+  }
+  62.5%{
+    transform: translateY(-250px);
+  }
+  75%{
+    transform: translateY(-300px);
+  }
+  87.5%{
+    transform: translateY(-350px);
+  }
+  100%{
+    transform: translateY(-400px);
+  }
+}
+
+.greet-subjects-item{
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(0, 102, 255);
+  display: flex;
+  align-items: center;
+
 }
