@@ -17,6 +17,7 @@ body {
 a {
   color: inherit;
 }
+
 h1 {
   font-size: 56px;
   text-align: center;
@@ -55,6 +56,9 @@ h2 {
 .navItem {
   text-decoration: none;
 }
+
+
+
 /*========Header=========*/
 #landing {
   background-color: rgba(232, 241, 241, 0.1);
@@ -64,25 +68,196 @@ header {
   height: calc(100vh - 80px);
 }
 
-.header__container {
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+
+
+
+
+section{
+  display: block;
+  height: 560px;
 }
 
-.header__description {
+.header-container{
+  height: 560px;
+}
+
+#header-container .header-description {
+  width: 100%;
+  height: 560px;
+  position: absolute;
+  background-color: #46435a;
+  opacity: .7;
+}
+
+#header-container .header-img {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 560px;
+  top: 177px;
+}
+
+#header-container .banner-responsive {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+  
+
+#header-container .header-inner-block{
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  top: 190px;
+  padding-top: 1px;
+}
+
+
+
+#header-container .header-inner-block h1 {
+  font-size: 55px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0 15px 10px 15px;
+  line-height: 60px;
+  margin-top: 0;
+  font-family: 'museo-slab',sans-serif;
+}
+
+
+#header-container .header-inner-block .header-sub p {
+  font-family: "museo-slab", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  color: #ddd;
+  letter-spacing:.5px
+}
+
+#header-container .header-inner-block h2 {
+  font-size: 33px;
+  margin-top: 0;
+  padding: 0 15px;
+}
+
+#header-container .header-inner-block h4 {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+  line-height:20px
+}
+
+#header-container .header-inner-block .header-sub{
+  top:20%
+}
+
+.banner-wrapper { 
+  height: 100px;
+  position: relative;
+}
+
+.banner-button-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.banner-button{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.btn1{
+  border-radius: 12px;
+}
+
+.btn1:hover{
+  color: black;
+  background-color: rgb(0, 140, 255);
+}
+
+
+/*========Greeting=========*/
+
+#greet-container{
+  margin-top: 25px;
+}
+
+#greet-container .greet-content{
+  text-align: center;
+  border-radius: 8px;
+  padding: 35px 25px;
+  background-image: linear-gradient(to top,#f8f9fa 0,#fcfcfd 100%);
+  border: 1px solid #f8f9fa;
+  color: #758191;
+  position: relative;
+  transition: border-color .5s ease;
+}
+
+.greet-title-item{
+  font-size: 50x;
+}
+
+.greet-title-subitem{
+  font-size: 35x;
+}
+
+.greet-subjects{
+  position: relative;
+  text-align: center;
+  height: 50px;
+  overflow: hidden;
+}
+
+.greet-subjects-wrapper{
+  height: 100%;
+  animation: move 15s ease-in-out infinite alternate;
+}
+
+@keyframes move {
+  12.5%{
+    transform: translateY(-50px);
+  }
+  25%{
+    transform: translateY(-100px);
+  }
+  37.5%{
+    transform: translateY(-150px);
+  }
+  50%{
+    transform: translateY(-200px);
+  }
+  62.5%{
+    transform: translateY(-250px);
+  }
+  75%{
+    transform: translateY(-300px);
+  }
+  87.5%{
+    transform: translateY(-350px);
+  }
+  100%{
+    transform: translateY(-400px);
+  }
+}
+
+.greet-subjects-item{
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(0, 102, 255);
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
-.header__title {
-  font-size: 32px;
-  margin: 25px;
-}
-.header__sub {
-  margin: 34px;
+
 }
