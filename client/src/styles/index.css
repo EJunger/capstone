@@ -17,6 +17,7 @@ body {
 a {
   color: inherit;
 }
+
 h1 {
   font-size: 56px;
   text-align: center;
@@ -64,25 +65,117 @@ header {
   height: calc(100vh - 80px);
 }
 
-.header__container {
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+
+
+
+
+
+.header-container{
+  height: 560px;
 }
 
-.header__description {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#header-container .header-description {
+  width: 100%;
+  height: 560px;
+  position: absolute;
+  background-color: #46435a;
+  opacity: .7;
 }
-.header__title {
-  font-size: 32px;
-  margin: 25px;
+
+#header-container .header-img {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 560px;
+  top: 177px;
 }
-.header__sub {
-  margin: 34px;
+
+#header-container .banner-responsive {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+  
+
+#header-container .header-inner-block{
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  top: 190px;
+  padding-top: 1px;
+}
+
+
+
+#header-container .header-inner-block h1 {
+  font-size: 55px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0 15px 10px 15px;
+  line-height: 60px;
+  margin-top: 0;
+  font-family: 'museo-slab',sans-serif;
+}
+
+
+#header-container .header-inner-block .header-sub p {
+  font-family: "museo-slab", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  color: #ddd;
+  letter-spacing:.5px
+}
+
+#header-container .header-inner-block h2 {
+  font-size: 33px;
+  margin-top: 0;
+  padding: 0 15px;
+}
+
+#header-container .header-inner-block h4 {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+  line-height:20px
+}
+
+#header-container .header-inner-block .header-sub{
+  top:20%
+}
+
+.banner-wrapper { 
+  height: 100px;
+  position: relative;
+}
+
+.banner-button-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.banner-button{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.btn1{
+  border-radius: 12px;
+}
+
+.btn1:hover{
+  color: black;
+  background-color: rgb(0, 140, 255);
 }

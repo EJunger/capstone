@@ -1,24 +1,25 @@
-
+import Image from 'next/image'
 
 const Header = () => {
   return (
-    <section id="landing">
-      <header>
-        <div className="header__container">
-          <div className="header__description">
-            <h1 className="header__title">Looking to innovate the Tutoring industry</h1>
-            <h2 className="header__sub">
-             Our mission is to provide convenient access to supplementary learning for a wide variety of prices and subjects
-            </h2>
-            <a href="#features">
-              <button className="btn btn-outline-primary m-2 fontP">Browse Tutors</button>
+    <section id="header-container">
+      <div className="header-description"></div>
+      <div className="header-inner-block">
+        <div className="header-sub">
+          <h1>Instant access to Tutoring</h1>
+          <h2>The most convenient way for you to connect you to a Tutor! Anywhere, anytime.</h2>
+        </div>
+        <div className="banner-wrapper">
+          <div className="banner-button-center">
+          <a href="#features">
+              <button className="banner-button btn1">Browse Tutors</button>
             </a>
-            {/* <figure className="header__img--wrapper">
-              <img src="" alt="" />
-            </figure> */}
           </div>
         </div>
-      </header>
+      </div>
+      <div className="header-img">
+        <Image src="/banner.png" className="banner-responsive"/>
+       </div>
     </section>
   );
 };
