@@ -7,9 +7,9 @@ const Header = () => {
         <div className="i-left">
           <h1 className="h1font">Find your best tutor with affordable prices</h1>
           <p className="subheader">
-            TutorU is most convenient way for you to connect tutors!
+            TutorU is the most convenient way for you to connect tutors!
             Anywhere, anytime.
-            Your learning opportunity is endless at Tutor with professional
+            Your learning opportunity is endless at Tutor with professional help is one click away!
           </p>
           <a className="btn btn-secondary" href="#" >See all tutors</a>
         </div>
