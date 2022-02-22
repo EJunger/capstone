@@ -1,26 +1,23 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 const Header = () => {
   return (
-    <section id="header-container">
-      <div className="header-description"></div>
-      <div className="header-inner-block">
-        <div className="header-sub">
-          <h1>Instant access to Tutoring</h1>
-          <h2>The most convenient way for you to connect you to a Tutor! Anywhere, anytime.</h2>
+    <header>
+      <div className="row">
+        <div className="i-left">
+          <h1 className="h1font">Find your best tutor with affordable prices</h1>
+          <p className="subheader">
+            TutorU is most convenient way for you to connect tutors!
+            Anywhere, anytime.
+            Your learning opportunity is endless at Tutor with professional
+          </p>
+          <a className="btn btn-secondary" href="#" >See all tutors</a>
         </div>
-        <div className="banner-wrapper">
-          <div className="banner-button-center">
-          <a href="#features">
-              <button className="banner-button btn1">Browse Tutors</button>
-            </a>
-          </div>
+        <div className="i-right">
+          <Image className=" headerImg--larger" width={900} height={700} src="/world.png" alt="" />
         </div>
       </div>
-      <div className="header-img">
-        <Image src="/banner.png" className="banner-responsive"/>
-       </div>
-    </section>
+    </header>
   );
 };
 

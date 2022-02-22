@@ -1,13 +1,13 @@
-import Greeting from "../components/Greeting";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
+import Summary from "../components/Summary";
 
 const Index = () => {
     return (
         <>
             <Nav/>
             <Header/>
-            <Greeting/>
+            <Summary/>
         </>
     )
 }
