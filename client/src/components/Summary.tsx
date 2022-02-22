@@ -8,7 +8,7 @@ const Summary = () => {
                 <h2>Learn one-on-one with an expert in the TutorU Online Classroom.</h2>
                 <div className="summary__desc">
                     <div className="summary__img">
-                         <Image width={500} height={400} src="/video_call.png" alt="" />
+                         <Image className="imgTest" width={500} height={400} src="/video_call.png" alt="" />
                     </div>
                     <div className="summary__sub">
                         <h3>Find your subject expert</h3>
