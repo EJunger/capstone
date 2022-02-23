@@ -9,7 +9,7 @@ const Header = () => {
           <p className="subheader">
             TutorU is the most convenient way for you to connect tutors!
             Anywhere, anytime.
-            Your learning opportunity is endless at Tutor with professional help is one click away!
+            Your learning opportunity is endless at TutorU, professional help is one click away!
           </p>
           <a className="btn btn-secondary" href="#" >See all tutors</a>
         </div>

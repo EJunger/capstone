@@ -197,3 +197,66 @@ header {
 .s-left {
   flex: 1;
 }
+/*=======Highlights======*/
+.highlights__container {
+  padding: 56px 0;
+  background-color: #dbdbdb;
+}
+.highlights__row {
+  background-color: #dbdbdb;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+#highlights {
+  background-color: #dbdbdb;
+  position: relative;
+  max-width: 100vw;
+}
+
+.highlight__wrapper {
+  display: flex;
+  background-color: #dbdbdb;
+}
+
+.highlight {
+  background-color: #dbdbdb;
+  padding: 0 24px;
+  width: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.highlight__para {
+  background-color: #dbdbdb;
+  text-align: center;
+}
+
+.highlight__img {
+  background-color: #dbdbdb;
+  color: #115277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.highlight__subtitle {
+  background-color: #dbdbdb;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.section__title{
+  background-color: #dbdbdb;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 32px;
+  text-align: center;
+}

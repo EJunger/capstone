@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Highlights from "../components/Highlights";
 import Nav from "../components/Nav";
 import Study from "../components/Study";
 import Summary from "../components/Summary";
@@ -10,6 +11,7 @@ const Index = () => {
             <Header/>
             <Summary/>
             <Study/>
+            <Highlights/>
         </>
     )
 }
