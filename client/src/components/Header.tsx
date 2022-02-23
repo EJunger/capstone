@@ -11,7 +11,7 @@ const Header = () => {
             Anywhere, anytime.
             Your learning opportunity is endless at TutorU, professional help is one click away!
           </p>
-          <a className="btn btn-secondary" href="#" >See all tutors</a>
+          <a className="btn btn-secondary" href="directory" >See all tutors</a>
         </div>
         <div className="i-right">
           <Image className=" headerImg--larger" width={900} height={700} src="/world.png" alt="" />

@@ -260,3 +260,76 @@ header {
   margin-bottom: 32px;
   text-align: center;
 }
+
+/*=======Directory======*/
+.profile__container {
+  padding: 56px 0;
+  background-color: #dbdbdb;
+}
+.profile__row {
+  background-color: #dbdbdb;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+#profile {
+  background-color: #dbdbdb;
+  position: relative;
+  max-width: 100vw;
+}
+
+.profile__wrapper {
+  display: flex;
+  background-color: #dbdbdb;
+}
+
+.profile {
+  background-color: #dbdbdb;
+  padding: 0 24px;
+  width: calc(100% / 3);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile__para {
+  background-color: #dbdbdb;
+  text-align: center;
+}
+
+.profile__details {
+  background-color: #dbdbdb;
+  text-align: left;
+}
+
+.p-link{
+  text-decoration: underline;
+  color: #115277;
+}
+
+
+.profile__img {
+  background-color:#dbdbdb;
+  color: #115277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.profile__name {
+  background-color:#dbdbdb;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.profileImg{
+  border-radius: 50%;
+  background-color:#dbdbdb;
+}
