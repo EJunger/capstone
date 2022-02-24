@@ -16,7 +16,7 @@ const Directory = () => {
                             </p>
                             <br></br>
                             <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            
+                            <a className="btn btn-secondary" href="booking" >Book now!</a>
 
                         </div>
                         <div className="profile">
@@ -27,6 +27,10 @@ const Directory = () => {
                             <p className="profile__para">
                             PhD Math (On Dissertation) @ Bukidnon State University
                             </p>
+                            <br></br>
+                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
+                            <a className="btn btn-secondary" href="booking" >Book now!</a>
+
                         </div>
                         <div className="profile">
                             <div className="profile__img">
@@ -36,6 +40,10 @@ const Directory = () => {
                             <p className="profile__para">
                             M.Tech @ Indian Institute Of Technology
                             </p>
+                            <br></br><br></br>
+                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
+                            <a className="btn btn-secondary" href="booking" >Book now!</a>
+
                         </div>
                         <div className="profile">
                             <div className="profile__img">
@@ -45,6 +53,10 @@ const Directory = () => {
                             <p className="profile__para">
                             Math, Physics, Chem, Stats, Eng @ Bahauddin Zakariya Universit
                             </p>
+                            <br></br>
+                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
+                            <a className="btn btn-secondary" href="booking" >Book now!</a>
+
                         </div>
                         <div className="profile">
                             <div className="profile__img">
@@ -54,6 +66,10 @@ const Directory = () => {
                             <p className="profile__para">
                             Meterorology @ Penn State
                             </p>
+                            <br></br><br></br><br></br>
+                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
+                            <a className="btn btn-secondary" href="booking" >Book now!</a>
+
                         </div>
 
                     </div>
