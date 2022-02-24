@@ -1,4 +1,4 @@
-import Booking from "../components/booking";
+import Booking from "../components/Booking";
 import Nav from "../components/Nav";
 
 const booking = () => {
