@@ -10,6 +10,7 @@ const nav = () => {
               <li><a className="navItem" href="#about">For Student</a></li>
               <li><a className="navItem" href="#product">For Tutors</a></li>
               <li><a className="navItem" href="#service">Pricing</a></li>
+              <li><a className="navItem" href="/profile">Profile</a></li>
             </ul>
         </div>
         <div>
