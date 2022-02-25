@@ -62,7 +62,7 @@ const Directory = () => {
                             <div className="profile__img">
                             <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
                             </div>
-                            <h3 className="profile__name">Trevon Dcosta</h3>
+                            <h3 className="profile__name">Trevon Costa</h3>
                             <p className="profile__para">
                             Meterorology @ Penn State
                             </p>
@@ -133,7 +133,7 @@ const Directory = () => {
                             <div className="profile__img">
                             <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
                             </div>
-                            <h3 className="profile__name">Trevon Dcosta</h3>
+                            <h3 className="profile__name">Trevon Costa</h3>
                             <p className="profile__para">
                             Meterorology @ Penn State
                             </p>
