@@ -11,7 +11,7 @@ const Highlights = () => {
                     <div className="highlight__wrapper">
                         <div className="highlight">
                             <div className="highlight__img">
-                            <Image  className="imgTest"width="400" height="300" src="/online-course.png" alt=""/>
+                            <Image  className="imgTest" width="400" height="300" src="/online-course.png" alt=""/>
                             </div>
                             <h3 className="highlight__subtitle">Your satisfaction is guaranteed</h3>
                             <p className="highlight__para">

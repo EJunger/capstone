@@ -15,7 +15,7 @@ const Booking = () => {
           <p >
          $35/ hour
           </p>
-          <a className="btn btn-secondary" href="#" >Book Now!</a>
+          <a className="btn btn-secondary" href="/calendar" >Book Now!</a>
         </div>
       </div>
     </header>
