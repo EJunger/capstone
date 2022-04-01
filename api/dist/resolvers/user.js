@@ -16,10 +16,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserResolver = void 0;
-const User_1 = require("src/models/User");
+const User_1 = require("../models/User");
 const argon2_1 = __importDefault(require("argon2"));
 const validation_1 = require("../utils/validation");
-const inputs_1 = require("src/utils/inputs");
+const inputs_1 = require("../utils/inputs");
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 let InputError = class InputError {
@@ -49,7 +49,7 @@ UserResponse = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], UserResponse);
 let UserResolver = class UserResolver {
-    async register(options, { req }) {
+    async register(options, {}) {
         const errors = (0, validation_1.registerValidation)(options);
         if (errors) {
             return { errors };
@@ -63,6 +63,10 @@ let UserResolver = class UserResolver {
                 .into(User_1.User)
                 .values({
                 username: options.username,
+                fName: options.fName,
+                lName: options.lName,
+                address: options.address,
+                phone: options.phone,
                 email: options.email,
                 password: hashedPassword,
             })
@@ -77,11 +81,11 @@ let UserResolver = class UserResolver {
                     errors: [
                         {
                             field: 'username',
-                            message: 'that username already exists',
+                            message: 'That username already exists',
                         },
                         {
                             field: 'email',
-                            message: 'that email is already in use',
+                            message: 'That email is already in use',
                         },
                     ],
                 };

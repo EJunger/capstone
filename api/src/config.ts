@@ -1,5 +1,3 @@
-const env = process.env.NODE_ENV || "production";
-
 const config = {
   development: {
     APIKey: "",
@@ -9,6 +7,7 @@ const config = {
     APIKey: "5ObbipMsSsSKxaVY0-9Mjg",
     APISecret: "DLphPA3pQziG2ouSd0ORRFNCukVy1okozKEL",
   },
+  env: process.env.NODE_ENV || "production"
 };
 
-module.exports = config[env];
+export default config;
