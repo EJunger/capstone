@@ -7,6 +7,7 @@ import { User } from './models/User';
 import { UserResolver } from './resolvers/user';
 import cors from 'cors';
 
+//must have postgres running on port 4000
 const PORT = 4000;
 const HOST = 'localhost';
 
