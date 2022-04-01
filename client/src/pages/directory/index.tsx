@@ -1,34 +1,30 @@
-import Nav from "../../components/Nav";
 import Link from "next/link";
-import { data } from './tutorList';
-
-export const getStaticProps = async () => {
-    const posts = data;
-
-    return {
-        props: { tutors: data }
-    }
-}
-
-const Directory = ({ tutors }) => {
+import data from "./tutorList";
+import Nav from "../../components/Nav";
+export default function Home({ posts }) {
     return (
         <>
-            <Nav />
-            <div>
-                <h1>Tutor Directory</h1>
+             <Nav/>
+            <main>
+            <h1>Tutor Directory</h1>
                 <ol>
-                    {tutors.map((post) => (
-                        <li key={post.id}>
-                            <Link href={`directory/${post.username}`}>
-                                <a>{post.name}</a>
+                    {posts.map((post) => (
+                        <li key={post.Id}>
+                            <Link href={`directory/${post.Slug}`}>
+                                <a>{post.Title}</a>
                             </Link>
                         </li>
                     ))}
                 </ol>
-            </div>
-
+            </main>
         </>
     );
 }
 
-export default Directory;
+export async function getStaticProps() {
+    const posts = data;
+
+    return {
+        props: { posts }
+    };
+}
