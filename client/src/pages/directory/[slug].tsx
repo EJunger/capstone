@@ -8,8 +8,11 @@ export default function Post({ post }) {
       <Nav/>
       <main>
         <article>
-          <h1>{post.Title}</h1>
-          <p>{post.Text}</p>
+          <img src={post.ProfilePicture}/>
+          <h1>{post.Name}</h1>
+          <p>{post.Email}</p>
+          <h1>{post.Subjects}</h1>
+          <p>{post.Desc}</p>
         </article>
       </main>
     </>

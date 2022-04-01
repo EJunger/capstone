@@ -11,6 +11,7 @@ import jwt from 'jsonwebtoken';
 import config from "./config";
 import rp from 'request-promise';
 
+//must have postgres running on port 4000
 const PORT = 4000;
 const HOST = 'localhost';
 
