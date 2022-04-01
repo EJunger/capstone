@@ -1,32 +1,32 @@
 import Nav from "../../components/Nav";
-import Link from 'next/link';
+import Link from "next/link";
+import { data } from './tutorList';
 
 export const getStaticProps = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    const data = await res.json();
-  
+    const posts = data;
 
-    return{
-        props: {tutors: data}
+    return {
+        props: { tutors: data }
     }
-
 }
 
-const Directory = ({tutors}) => {
+const Directory = ({ tutors }) => {
     return (
         <>
-            <Nav/>
+            <Nav />
             <div>
                 <h1>Tutor Directory</h1>
-                {tutors.map(tutor => (
-                    <Link href={'/tutors/' + tutor.id} key={tutor.id}>
-                        <a>
-                            <h3>{tutor.name}</h3>
-                        </a>
-                    </Link>
-                ))}
+                <ol>
+                    {tutors.map((post) => (
+                        <li key={post.id}>
+                            <Link href={`directory/${post.username}`}>
+                                <a>{post.name}</a>
+                            </Link>
+                        </li>
+                    ))}
+                </ol>
             </div>
-            
+
         </>
     );
 }
