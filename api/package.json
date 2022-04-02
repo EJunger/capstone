@@ -31,8 +31,17 @@
     "apollo": "^2.33.10",
     "apollo-server-express": "^2.25.3",
     "argon2": "^0.28.4",
+<<<<<<< HEAD
 
     "connect-redis": "^6.1.3",
+=======
+<<<<<<< HEAD
+    "body-parser": "^1.19.2",
+=======
+    "connect-redis": "^6.1.3",
+>>>>>>> 65abbe42456216dc82634c0f44d6662e203f3098
+    "cors": "^2.8.5",
+>>>>>>> c888442b036535b74423007d0d6364db519a4a5f
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "graphql": "15.8.0",
