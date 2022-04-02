@@ -1,11 +1,12 @@
 import Calendar from "../components/Calendar";
+import Nav from "../components/Nav";
 
 const calendar = () => {
 
     return (
 
         <>
-        <h1>Mariama Alii's Availability</h1>
+        <Nav/>
         <Calendar />
         
         </>
