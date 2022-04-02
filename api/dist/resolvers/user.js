@@ -63,11 +63,11 @@ let UserResolver = class UserResolver {
                 .into(User_1.User)
                 .values({
                 username: options.username,
+                email: options.email,
                 fName: options.fName,
                 lName: options.lName,
                 address: options.address,
                 phone: options.phone,
-                email: options.email,
                 password: passwordHash,
             })
                 .returning('*')
@@ -93,6 +93,33 @@ let UserResolver = class UserResolver {
         }
         return { user };
     }
+    async login(email, password, {}) {
+        const user = await User_1.User.findOne(email);
+        if (!user) {
+            return {
+                errors: [
+                    {
+                        field: 'email',
+                        message: "that email  doesn't exist",
+                    },
+                ],
+            };
+        }
+        const valid = await argon2_1.default.verify(user.password, password);
+        if (!valid) {
+            return {
+                errors: [
+                    {
+                        field: 'password',
+                        message: 'incorrect password',
+                    },
+                ],
+            };
+        }
+        return {
+            user,
+        };
+    }
 };
 __decorate([
     (0, type_graphql_1.Mutation)(() => UserResponse),
@@ -102,6 +129,15 @@ __decorate([
     __metadata("design:paramtypes", [inputs_1.UserSchema, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => UserResponse),
+    __param(0, (0, type_graphql_1.Arg)('email')),
+    __param(1, (0, type_graphql_1.Arg)('password')),
+    __param(2, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "login", null);
 UserResolver = __decorate([
     (0, type_graphql_1.Resolver)()
 ], UserResolver);

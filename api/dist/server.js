@@ -15,6 +15,10 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = __importDefault(require("./config"));
 const request_promise_1 = __importDefault(require("request-promise"));
+const redis_1 = __importDefault(require("redis"));
+const express_session_1 = __importDefault(require("express-session"));
+const connect_redis_1 = __importDefault(require("connect-redis"));
+const env_const_1 = require("./env.const");
 const PORT = 4000;
 const HOST = 'localhost';
 const main = async () => {
@@ -28,9 +32,27 @@ const main = async () => {
         entities: [User_1.User],
     });
     const app = (0, express_1.default)();
+    const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
+    const redisClient = redis_1.default.createClient();
     app.use((0, cors_1.default)({
         origin: 'http://localhost:3000',
         credentials: true,
+    }));
+    app.use((0, express_session_1.default)({
+        name: env_const_1.COOKIE_NAME,
+        store: new RedisStore({
+            client: redis_1.default,
+            disableTouch: true,
+        }),
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 365,
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: env_const_1.__prod__,
+        },
+        saveUninitialized: false,
+        secret: 'randostring',
+        resave: false,
     }));
     app.use(body_parser_1.default.json());
     app.use(body_parser_1.default.urlencoded({
