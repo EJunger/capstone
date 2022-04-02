@@ -14,7 +14,7 @@ const Study= () => {
             who ensure students have extra study material, examples and homework, to ensure
             students are prepared for any upcoming assignment!
           </p>
-          <a className="btn btn-secondary" href="#" >Get help now!</a>
+          <a className="btn btn-secondary" href="/directory" >Get help now!</a>
         </div>
       </div>
     </header>

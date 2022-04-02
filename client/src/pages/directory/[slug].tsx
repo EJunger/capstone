@@ -14,6 +14,7 @@ export default function Post({ post }) {
           <h1>{post.Subjects}</h1>
           <p>{post.Desc}</p>
         </article>
+        <a href="/calendar" className="btn btn-primary"> Book Now!</a>
       </main>
     </>
   );

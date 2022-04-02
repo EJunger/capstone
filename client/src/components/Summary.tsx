@@ -19,7 +19,7 @@ const Summary = () => {
                             <li><a href="#" >Science <i className="fa fa-long-arrow-right"></i></a></li>
                             <li><a href="#">Business <i className="fa fa-long-arrow-right"></i></a></li>
                         </ul>
-                        <a className="btn-thrid" href="#" >Find an Online Tutor</a>
+                        <a className="btn-thrid" href="directory" >Find an Online Tutor</a>
                     </div>
                 </div>
             </div>
