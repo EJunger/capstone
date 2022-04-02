@@ -13,7 +13,7 @@ import config from './config';
 import rp from 'request-promise';
 
 //Session start
-import redis from 'redis';
+import Redis from 'ioredis';
 import session from 'express-session';
 import connectRedis from 'connect-redis';
 import { COOKIE_NAME, __prod__ } from './env.const';
@@ -36,7 +36,7 @@ const main = async () => {
   const app = express();
 
   const RedisStore = connectRedis(session);
-  const redisClient = redis.createClient();
+  const redis = new Redis();
 
   app.use(
     cors({
@@ -77,7 +77,7 @@ const main = async () => {
       resolvers: [UserResolver],
       validate: false,
     }),
-    context: ({ req, res }): Context => ({ req, res }),
+    context: ({ req, res }) => ({ req, res, redis }),
   });
 
   await apolloServer.applyMiddleware({
