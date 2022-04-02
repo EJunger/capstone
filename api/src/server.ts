@@ -72,18 +72,18 @@ const main = async () => {
     })
   );
 
-  const apolloServer = new ApolloServer({
-    schema: await buildSchema({
-      resolvers: [UserResolver],
-      validate: false,
-    }),
-    context: ({ req, res }) => ({ req, res, redis }),
-  });
+  // const apolloServer = new ApolloServer({
+  //   schema: await buildSchema({
+  //     resolvers: [UserResolver],
+  //     validate: false,
+  //   }),
+  //   context: ({ req, res }) => ({ req, res }),
+  // });
 
-  await apolloServer.applyMiddleware({
-    app,
-    cors: false,
-  });
+  // await apolloServer.applyMiddleware({
+  //   app,
+  //   cors: false,
+  // });
 
   //Zoom
   app.get('/', (_, response) => {
