@@ -1,10 +1,10 @@
 import 'reflect-metadata';
-//import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createConnection } from 'typeorm';
-//import { buildSchema } from 'type-graphql';
+import { buildSchema } from 'type-graphql';
 import { User } from './models/User';
-//import { UserResolver } from './resolvers/user';
+import { UserResolver } from './resolvers/user';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
