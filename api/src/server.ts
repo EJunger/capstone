@@ -8,7 +8,7 @@ import { UserResolver } from './resolvers/user';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
-import config from "./config";
+import config from './config';
 import rp from 'request-promise';
 
 //must have postgres running on port 4000
@@ -35,11 +35,10 @@ const main = async () => {
     })
   );
 
-
   app.use(bodyParser.json());
   app.use(
     bodyParser.urlencoded({
-      limit: "50mb",
+      limit: '50mb',
       extended: true,
     })
   );
@@ -58,8 +57,8 @@ const main = async () => {
   });
 
   //Zoom
-  app.get("/", (_, response) => {
-    response.json({ info: "Node.js, Express and Zoom API" });
+  app.get('/', (_, response) => {
+    response.json({ info: 'Node.js, Express and Zoom API' });
   });
 
   var email;
@@ -70,39 +69,39 @@ const main = async () => {
 
   const token = jwt.sign(payload, config.production.APISecret);
 
-  app.post("/meeting", (req, res) => {
+  app.post('/meeting', (req, res) => {
     email = req.body.email;
     var options = {
-      method: "POST",
-      uri: "https://api.zoom.us/v2/users/" + email + "/meetings",
+      method: 'POST',
+      uri: 'https://api.zoom.us/v2/users/' + email + '/meetings',
       body: {
-        topic: "Meeting",
+        topic: 'Meeting',
         type: 1,
         settings: {
-          host_video: "true",
-          participant_video: "true",
+          host_video: 'true',
+          participant_video: 'true',
         },
       },
       auth: {
         bearer: token,
       },
       headers: {
-        "User-Agent": "Zoom-api-Jwt-Request",
-        "content-type": "application/json",
+        'User-Agent': 'Zoom-api-Jwt-Request',
+        'content-type': 'application/json',
       },
       json: true,
     };
 
     rp(options)
-      .then(function (response: { join_url: any; }) {
-        console.log("response is: ", response.join_url);
+      .then(function (response: { join_url: any }) {
+        console.log('response is: ', response.join_url);
         let dataRes = {
           join_url: response.join_url,
         };
         res.status(200).json(dataRes);
       })
-      .catch(function (err) {
-        console.log("API call failed, reason ", err);
+      .catch(function (err: any) {
+        console.log('API call failed, reason ', err);
       });
   });
 

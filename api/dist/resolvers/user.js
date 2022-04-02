@@ -54,7 +54,7 @@ let UserResolver = class UserResolver {
         if (errors) {
             return { errors };
         }
-        const hashedPassword = await argon2_1.default.hash(options.password);
+        const passwordHash = await argon2_1.default.hash(options.password);
         let user;
         try {
             const result = await (0, typeorm_1.getConnection)()
@@ -68,7 +68,7 @@ let UserResolver = class UserResolver {
                 address: options.address,
                 phone: options.phone,
                 email: options.email,
-                password: hashedPassword,
+                password: passwordHash,
             })
                 .returning('*')
                 .execute();
