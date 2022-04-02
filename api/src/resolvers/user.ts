@@ -34,7 +34,7 @@ export class UserResolver {
     if (errors) {
       return { errors };
     }
-    const hashedPassword = await argon2.hash(options.password);
+    const passwordHash = await argon2.hash(options.password);
     let user;
     try {
       const result = await getConnection()
@@ -42,14 +42,13 @@ export class UserResolver {
         .insert()
         .into(User)
         .values({
-          //TODO add missing fields
           username: options.username,
+          email: options.email,
           fName: options.fName,
           lName: options.lName,
           address: options.address,
           phone: options.phone,
-          email: options.email,
-          password: hashedPassword,
+          password: passwordHash,
         })
         .returning('*')
         .execute();
@@ -72,5 +71,39 @@ export class UserResolver {
       }
     }
     return { user };
+  }
+
+  @Mutation(() => UserResponse)
+  async login(
+    @Arg('email') email: string,
+    @Arg('password') password: string,
+    @Ctx() {}: Context //TODO replace { req }
+  ): Promise<UserResponse> {
+    const user = await User.findOne(email);
+    if (!user) {
+      return {
+        errors: [
+          {
+            field: 'email',
+            message: "that email  doesn't exist",
+          },
+        ],
+      };
+    }
+    const valid = await argon2.verify(user.password, password);
+    if (!valid) {
+      return {
+        errors: [
+          {
+            field: 'password',
+            message: 'incorrect password',
+          },
+        ],
+      };
+    }
+
+    return {
+      user,
+    };
   }
 }
