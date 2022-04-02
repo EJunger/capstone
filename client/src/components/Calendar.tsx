@@ -42,7 +42,10 @@ const Calendar = () => {
 
 
   return(
-      <><SchedulerCalendar
+      <>
+      <br></br>
+      <br></br>
+      <SchedulerCalendar
       availabilities={availabilities}
       availabilityType={''}
       duration={10}
