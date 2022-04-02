@@ -4,17 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-const apollo_server_express_1 = require("apollo-server-express");
 const express_1 = __importDefault(require("express"));
 const typeorm_1 = require("typeorm");
-const type_graphql_1 = require("type-graphql");
 const User_1 = require("./models/User");
-const user_1 = require("./resolvers/user");
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = __importDefault(require("./config"));
 const request_promise_1 = __importDefault(require("request-promise"));
+const redis_1 = __importDefault(require("redis"));
+const express_session_1 = __importDefault(require("express-session"));
 const PORT = 4000;
 const HOST = 'localhost';
 const main = async () => {
@@ -28,6 +27,14 @@ const main = async () => {
         entities: [User_1.User],
     });
     const app = (0, express_1.default)();
+    const RedisStore = connectRedis(express_session_1.default);
+    const redisClient = redis_1.default.createClient();
+    app.use((0, express_session_1.default)({
+        name: 'sessId',
+        store: new RedisStore({ client: redisClient }),
+        secret: 'hsazerltaugh',
+        resave: false,
+    }));
     app.use((0, cors_1.default)({
         origin: 'http://localhost:3000',
         credentials: true,
@@ -37,17 +44,6 @@ const main = async () => {
         limit: '50mb',
         extended: true,
     }));
-    const apolloServer = new apollo_server_express_1.ApolloServer({
-        schema: await (0, type_graphql_1.buildSchema)({
-            resolvers: [user_1.UserResolver],
-            validate: false,
-        }),
-        context: ({ req, res }) => ({ req, res }),
-    });
-    await apolloServer.applyMiddleware({
-        app,
-        cors: false,
-    });
     app.get('/', (_, response) => {
         response.json({ info: 'Node.js, Express and Zoom API' });
     });

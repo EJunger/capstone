@@ -1,15 +1,19 @@
 import 'reflect-metadata';
-import { ApolloServer } from 'apollo-server-express';
+//import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createConnection } from 'typeorm';
-import { buildSchema } from 'type-graphql';
+//import { buildSchema } from 'type-graphql';
 import { User } from './models/User';
-import { UserResolver } from './resolvers/user';
+//import { UserResolver } from './resolvers/user';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
 import config from './config';
 import rp from 'request-promise';
+
+//Session start
+import redis from 'redis';
+import session from 'express-session';
 
 //must have postgres running on port 4000
 const PORT = 4000;
@@ -28,6 +32,18 @@ const main = async () => {
 
   const app = express();
 
+  const RedisStore = connectRedis(session);
+  const redisClient = redis.createClient();
+
+  app.use(
+    session({
+      name: 'sessId',
+      store: new RedisStore({ client: redisClient }),
+      secret: 'hsazerltaugh',
+      resave: false,
+    })
+  );
+
   app.use(
     cors({
       origin: 'http://localhost:3000',
@@ -43,18 +59,18 @@ const main = async () => {
     })
   );
 
-  const apolloServer = new ApolloServer({
-    schema: await buildSchema({
-      resolvers: [UserResolver],
-      validate: false,
-    }),
-    context: ({ req, res }) => ({ req, res }),
-  });
+  // const apolloServer = new ApolloServer({
+  //   schema: await buildSchema({
+  //     resolvers: [UserResolver],
+  //     validate: false,
+  //   }),
+  //   context: ({ req, res }) => ({ req, res }),
+  // });
 
-  await apolloServer.applyMiddleware({
-    app,
-    cors: false,
-  });
+  // await apolloServer.applyMiddleware({
+  //   app,
+  //   cors: false,
+  // });
 
   //Zoom
   app.get('/', (_, response) => {

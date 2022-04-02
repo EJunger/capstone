@@ -335,3 +335,16 @@ header {
   background-color:#dbdbdb;
 }
 
+.zoomHeader{
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 55px;
+}
+.zoomDiv{
+  display: flex;
+  align-items: center;
+}
+.zoomImg{
+  width: 45px; 
+  height: 45px
+}
