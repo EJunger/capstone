@@ -1,10 +1,10 @@
 import 'reflect-metadata';
-import { ApolloServer } from 'apollo-server-express';
+//import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createConnection } from 'typeorm';
-import { buildSchema } from 'type-graphql';
+//import { buildSchema } from 'type-graphql';
 import { User } from './models/User';
-import { UserResolver } from './resolvers/user';
+//import { UserResolver } from './resolvers/user';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
@@ -44,18 +44,18 @@ const main = async () => {
     })
   );
 
-  const apolloServer = new ApolloServer({
-    schema: await buildSchema({
-      resolvers: [UserResolver],
-      validate: false,
-    }),
-    context: ({ req, res }) => ({ req, res }),
-  });
+  // const apolloServer = new ApolloServer({
+  //   schema: await buildSchema({
+  //     resolvers: [UserResolver],
+  //     validate: false,
+  //   }),
+  //   context: ({ req, res }) => ({ req, res }),
+  // });
 
-  await apolloServer.applyMiddleware({
-    app,
-    cors: false,
-  });
+  // await apolloServer.applyMiddleware({
+  //   app,
+  //   cors: false,
+  // });
 
   //Zoom
   app.get("/", (_, response) => {
