@@ -1,151 +1,26 @@
+import Link from "next/link";
 import Image from "next/image";
 
-const Directory = () => {
+const Directory = ({ post }) => {
     return (
         <section id="profile">
-            <div className="profile__container">
-                <div className="profile__row">
-                    <div className="profile__wrapper">
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image  className="profileImg"width="400" height="300" src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Emma Junger</h3>
-                            <p className="profile__para">
-                            Physics & Mathematics, Chemistry @ Kharkiv National University
-                            </p>
-                            <br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
+            <div className="pro--container">
+                <div className="container__column">
+                    <Link href={`directory/${post.Slug}`}>
+                        <div className="profile__img">
+                        <img className="profileImg" src={post.ProfilePicture} />
                         </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                                <Image className="profileImg" width="400" height="300" src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Mariama Ali</h3>
-                            <p className="profile__para">
-                            PhD Math (On Dissertation) @ Bukidnon State University
-                            </p>
-                            <br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
+                    </Link>
+                    <div className="container__content">
+                        <Link href={`directory/${post.Slug}`}>
+                            <h3 className="profile__name">{post.Name}</h3>
+                        </Link>
+                        <p className="profile__para">{post.Subjects}</p>
+                        <h6 className="profile__details">{post.Desc}</h6>
+                        <div className="bookBtnDiv">
+                        <a className="btn bookbtn btn-secondary" href={`directory/${post.Slug}`} >View More!</a>
                         </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Sania Juddha</h3>
-                            <p className="profile__para">
-                            M.Tech @ Indian Institute Of Technology
-                            </p>
-                            <br></br><br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">James Solomon</h3>
-                            <p className="profile__para">
-                            Math, Physics, Chem, Stats, Eng @ Bahauddin Zakariya Universit
-                            </p>
-                            <br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Trevon Costa</h3>
-                            <p className="profile__para">
-                            Meterorology @ Penn State
-                            </p>
-                            <br></br><br></br><br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        
-
                     </div>
-                    
-                </div><div className="profile__row">
-                    <div className="profile__wrapper">
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image  className="profileImg"width="400" height="300" src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Emma Junger</h3>
-                            <p className="profile__para">
-                            Physics & Mathematics, Chemistry @ Kharkiv National University
-                            </p>
-                            <br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                                <Image className="profileImg" width="400" height="300" src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Mariama Ali</h3>
-                            <p className="profile__para">
-                            PhD Math (On Dissertation) @ Bukidnon State University
-                            </p>
-                            <br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Sania Juddha</h3>
-                            <p className="profile__para">
-                            M.Tech @ Indian Institute Of Technology
-                            </p>
-                            <br></br><br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">James Solomon</h3>
-                            <p className="profile__para">
-                            Math, Physics, Chem, Stats, Eng @ Bahauddin Zakariya Universit
-                            </p>
-                            <br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        <div className="profile">
-                            <div className="profile__img">
-                            <Image className="profileImg" width="400" height="300"src="/tutorprofile.png" alt=""/>
-                            </div>
-                            <h3 className="profile__name">Trevon Costa</h3>
-                            <p className="profile__para">
-                            Meterorology @ Penn State
-                            </p>
-                            <br></br><br></br><br></br>
-                            <h6 className="profile__details">I can tutor:<a href="#" className="p-link"> Russian</a>  ,<a href="#" className="p-link"> Ukrainian</a>  ,<a href="#" className="p-link"> Physics</a>  , <a href="#" className="p-link"> Mathematical Physics</a> , <a href="#" className="p-link"> Numerical Simulations</a>,<a href="#" className="p-link">  Mathematical Physics</a></h6>
-                            <a className="btn btn-secondary" href="booking" >Book now!</a>
-
-                        </div>
-                        
-
-                    </div>
-                    
                 </div>
             </div>
         </section>
