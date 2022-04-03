@@ -12,8 +12,10 @@ import config from './config';
 import rp from 'request-promise';
 
 //Session start
-import redis from 'redis';
+import Redis from 'ioredis';
 import session from 'express-session';
+import connectRedis from 'connect-redis';
+import { COOKIE_NAME, __prod__ } from './env.const';
 
 //must have postgres running on port 4000
 const PORT = 4000;
@@ -33,21 +35,31 @@ const main = async () => {
   const app = express();
 
   const RedisStore = connectRedis(session);
-  const redisClient = redis.createClient();
-
-  app.use(
-    session({
-      name: 'sessId',
-      store: new RedisStore({ client: redisClient }),
-      secret: 'hsazerltaugh',
-      resave: false,
-    })
-  );
+  const redis = new Redis();
 
   app.use(
     cors({
       origin: 'http://localhost:3000',
       credentials: true,
+    })
+  );
+
+  app.use(
+    session({
+      name: COOKIE_NAME,
+      store: new RedisStore({
+        client: redis,
+        disableTouch: true,
+      }),
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 365, //1 year
+        httpOnly: true,
+        sameSite: 'lax', //csrf
+        secure: __prod__, //Cookie only works in https
+      },
+      saveUninitialized: false,
+      secret: 'randostring', //! change me
+      resave: false,
     })
   );
 

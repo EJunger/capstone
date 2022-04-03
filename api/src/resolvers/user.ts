@@ -28,7 +28,7 @@ export class UserResolver {
   @Mutation(() => UserResponse)
   async register(
     @Arg('options') options: UserSchema,
-    @Ctx() {}: Context //TODO replace { req }
+    @Ctx() { req }: Context
   ): Promise<UserResponse> {
     const errors = registerValidation(options);
     if (errors) {
@@ -46,8 +46,6 @@ export class UserResolver {
           email: options.email,
           fName: options.fName,
           lName: options.lName,
-          address: options.address,
-          phone: options.phone,
           password: passwordHash,
         })
         .returning('*')
@@ -70,6 +68,9 @@ export class UserResolver {
         };
       }
     }
+    //! FOR SESSION IMPL **TESTING**
+    req.session.userId = user.id;
+
     return { user };
   }
 
@@ -77,7 +78,7 @@ export class UserResolver {
   async login(
     @Arg('email') email: string,
     @Arg('password') password: string,
-    @Ctx() {}: Context //TODO replace { req }
+    @Ctx() { req }: Context
   ): Promise<UserResponse> {
     const user = await User.findOne(email);
     if (!user) {
@@ -101,6 +102,9 @@ export class UserResolver {
         ],
       };
     }
+
+    //! FOR SESSION IMPL **TESTING**
+    req.session.userId = user.id;
 
     return {
       user,
