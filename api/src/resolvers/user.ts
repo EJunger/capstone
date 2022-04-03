@@ -3,8 +3,17 @@ import { User } from '../models/User';
 import argon2 from 'argon2';
 import { registerValidation } from '../utils/validation';
 import { UserSchema } from '../utils/inputs';
-import { Arg, Ctx, Field, Mutation, ObjectType, Resolver } from 'type-graphql';
+import {
+  Arg,
+  Ctx,
+  Field,
+  Mutation,
+  ObjectType,
+  Query,
+  Resolver,
+} from 'type-graphql';
 import { getConnection } from 'typeorm';
+import { COOKIE_NAME } from 'src/env.const';
 
 @ObjectType()
 class InputError {
@@ -28,13 +37,13 @@ export class UserResolver {
   @Mutation(() => UserResponse)
   async register(
     @Arg('options') options: UserSchema,
-    @Ctx() {}: Context //TODO replace { req }
+    @Ctx() { req }: Context
   ): Promise<UserResponse> {
     const errors = registerValidation(options);
     if (errors) {
       return { errors };
     }
-    const hashedPassword = await argon2.hash(options.password);
+    const passwordHash = await argon2.hash(options.password);
     let user;
     try {
       const result = await getConnection()
@@ -42,14 +51,11 @@ export class UserResolver {
         .insert()
         .into(User)
         .values({
-          //TODO add missing fields
           username: options.username,
+          email: options.email,
           fName: options.fName,
           lName: options.lName,
-          address: options.address,
-          phone: options.phone,
-          email: options.email,
-          password: hashedPassword,
+          password: passwordHash,
         })
         .returning('*')
         .execute();
@@ -71,6 +77,68 @@ export class UserResolver {
         };
       }
     }
+    //! FOR SESSION IMPL **TESTING**
+    req.session.userId = user.id;
+
     return { user };
+  }
+
+  @Mutation(() => UserResponse)
+  async login(
+    @Arg('email') email: string,
+    @Arg('password') password: string,
+    @Ctx() { req }: Context
+  ): Promise<UserResponse> {
+    const user = await User.findOne({ where: { email: email } });
+    if (!user) {
+      return {
+        errors: [
+          {
+            field: 'email',
+            message: "that email  doesn't exist",
+          },
+        ],
+      };
+    }
+    const valid = await argon2.verify(user.password, password);
+    if (!valid) {
+      return {
+        errors: [
+          {
+            field: 'password',
+            message: 'incorrect password',
+          },
+        ],
+      };
+    }
+
+    req.session.userId = user.id;
+
+    return {
+      user,
+    };
+  }
+
+  @Query(() => User, { nullable: true })
+  CurrentUser(@Ctx() { req }: Context) {
+    if (!req.session.userId) {
+      return null;
+    }
+    return User.findOne(req.session.userId);
+  }
+
+  @Mutation(() => Boolean)
+  logout(@Ctx() { req, res }: Context) {
+    return new Promise((resolve) =>
+      req.session.destroy((err: any) => {
+        res.clearCookie(COOKIE_NAME);
+        if (err) {
+          console.log(err);
+          resolve(false);
+          return;
+        }
+        resolve(true);
+      })
+    );
   }
 }

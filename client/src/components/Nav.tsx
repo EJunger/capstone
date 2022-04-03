@@ -4,18 +4,17 @@ const nav = () => {
     return (
         <nav className="container">
         <div className="nav__wapper">
-            <Image className="navImg" width="80" height="100" src="/icons8-leaf-50.png" alt=""/>
+           <a href='/' ><Image className="navImg" width="80" height="100" src="/icons8-leaf-50.png"  alt=""/></a>
             <ul className="navList">
               <li><a className="navItem" href="#home">Subject List</a></li>
-              <li><a className="navItem" href="#about">For Student</a></li>
+              <li><a className="navItem" href="/directory">For Student</a></li>
               <li><a className="navItem" href="#product">For Tutors</a></li>
-              <li><a className="navItem" href="#service">Pricing</a></li>
-              <li><a className="navItem" href="/profile">Profile</a></li>
+              <li><a className="navItem" href="/zoom">Sessions</a></li>
             </ul>
         </div>
         <div>
-            <a className="btn" href="#" >Login</a>
-            <a className="btn btn-primary" href="#">Register</a>
+            <a className="btn" href="/login" >Login</a>
+            <a className="btn btn-primary" href="/register">Register</a>
         </div>
       </nav>
     );

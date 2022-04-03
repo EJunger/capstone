@@ -16,10 +16,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserResolver = void 0;
-const User_1 = require("src/models/User");
+const User_1 = require("../models/User");
 const argon2_1 = __importDefault(require("argon2"));
 const validation_1 = require("../utils/validation");
-const inputs_1 = require("src/utils/inputs");
+const inputs_1 = require("../utils/inputs");
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 let InputError = class InputError {
@@ -54,7 +54,7 @@ let UserResolver = class UserResolver {
         if (errors) {
             return { errors };
         }
-        const hashedPassword = await argon2_1.default.hash(options.password);
+        const passwordHash = await argon2_1.default.hash(options.password);
         let user;
         try {
             const result = await (0, typeorm_1.getConnection)()
@@ -64,7 +64,9 @@ let UserResolver = class UserResolver {
                 .values({
                 username: options.username,
                 email: options.email,
-                password: hashedPassword,
+                fName: options.fName,
+                lName: options.lName,
+                password: passwordHash,
             })
                 .returning('*')
                 .execute();
@@ -77,17 +79,46 @@ let UserResolver = class UserResolver {
                     errors: [
                         {
                             field: 'username',
-                            message: 'that username already exists',
+                            message: 'That username already exists',
                         },
                         {
                             field: 'email',
-                            message: 'that email is already in use',
+                            message: 'That email is already in use',
                         },
                     ],
                 };
             }
         }
+        req.session.userId = user.id;
         return { user };
+    }
+    async login(email, password, { req }) {
+        const user = await User_1.User.findOne(email);
+        if (!user) {
+            return {
+                errors: [
+                    {
+                        field: 'email',
+                        message: "that email  doesn't exist",
+                    },
+                ],
+            };
+        }
+        const valid = await argon2_1.default.verify(user.password, password);
+        if (!valid) {
+            return {
+                errors: [
+                    {
+                        field: 'password',
+                        message: 'incorrect password',
+                    },
+                ],
+            };
+        }
+        req.session.userId = user.id;
+        return {
+            user,
+        };
     }
 };
 __decorate([
@@ -98,6 +129,15 @@ __decorate([
     __metadata("design:paramtypes", [inputs_1.UserSchema, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => UserResponse),
+    __param(0, (0, type_graphql_1.Arg)('email')),
+    __param(1, (0, type_graphql_1.Arg)('password')),
+    __param(2, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "login", null);
 UserResolver = __decorate([
     (0, type_graphql_1.Resolver)()
 ], UserResolver);

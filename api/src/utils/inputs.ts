@@ -9,11 +9,15 @@ export class UserSchema {
   @Field()
   lName: string;
   @Field()
-  address: string;
-  @Field()
-  phone: string;
-  @Field()
   password: string;
   @Field()
   email: string;
+}
+
+@InputType()
+export class EmailPasswordLogin {
+  @Field()
+  email: string;
+  @Field()
+  password: string;
 }
