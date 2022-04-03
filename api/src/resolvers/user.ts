@@ -3,8 +3,17 @@ import { User } from '../models/User';
 import argon2 from 'argon2';
 import { registerValidation } from '../utils/validation';
 import { UserSchema } from '../utils/inputs';
-import { Arg, Ctx, Field, Mutation, ObjectType, Resolver } from 'type-graphql';
+import {
+  Arg,
+  Ctx,
+  Field,
+  Mutation,
+  ObjectType,
+  Query,
+  Resolver,
+} from 'type-graphql';
 import { getConnection } from 'typeorm';
+import { COOKIE_NAME } from 'src/env.const';
 
 @ObjectType()
 class InputError {
@@ -80,7 +89,7 @@ export class UserResolver {
     @Arg('password') password: string,
     @Ctx() { req }: Context
   ): Promise<UserResponse> {
-    const user = await User.findOne(email);
+    const user = await User.findOne({ where: { email: email } });
     if (!user) {
       return {
         errors: [
@@ -103,11 +112,33 @@ export class UserResolver {
       };
     }
 
-    //! FOR SESSION IMPL **TESTING**
     req.session.userId = user.id;
 
     return {
       user,
     };
+  }
+
+  @Query(() => User, { nullable: true })
+  CurrentUser(@Ctx() { req }: Context) {
+    if (!req.session.userId) {
+      return null;
+    }
+    return User.findOne(req.session.userId);
+  }
+
+  @Mutation(() => Boolean)
+  logout(@Ctx() { req, res }: Context) {
+    return new Promise((resolve) =>
+      req.session.destroy((err: any) => {
+        res.clearCookie(COOKIE_NAME);
+        if (err) {
+          console.log(err);
+          resolve(false);
+          return;
+        }
+        resolve(true);
+      })
+    );
   }
 }
