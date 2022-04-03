@@ -18,6 +18,8 @@ export default function Post({ post }) {
           <p className="p-post">Description: {post.Desc}</p>
           <p className="p-post" >Pricing: ${post.Pricing}/ hour</p>
           <a className="btn btn-secondary" href="/calendar" >Book Now!</a>
+          <a className="btn btn-secondary" href="/calendar" >Book Now!</a>
+
         </div>
       </div>
     </>

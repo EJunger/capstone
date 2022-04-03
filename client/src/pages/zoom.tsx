@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Nav from "../components/Nav";
 
 const zoom = () => {
     const [username, setUsername] = useState("");
@@ -23,6 +24,7 @@ const zoom = () => {
     };
     return (
         <>
+        <Nav/>
         <div className="zoomNav">
             <h1 className="zoomHeader">welcome to your sessions</h1>
             <ul className="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
