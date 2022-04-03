@@ -13,8 +13,7 @@ const nav = () => {
             </ul>
         </div>
         <div>
-            <a className="btn" href="/login" >Login</a>
-            <a className="btn btn-primary" href="/register">Register</a>
+            <a className="btn" href="/login" >Logout</a>
         </div>
       </nav>
     );

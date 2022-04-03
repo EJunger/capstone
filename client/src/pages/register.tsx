@@ -1,11 +1,11 @@
 import Register from "../components/Register";
-import Nav from "../components/Nav";
+import LoginNav from "../components/LoginNav";
 
 const register = () => {
 
     return (
         <>
-            <Nav />
+            <LoginNav />
             <Register />
         </>
     )
