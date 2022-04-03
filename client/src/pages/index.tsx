@@ -1,17 +1,11 @@
-import Header from "../components/Header";
-import Highlights from "../components/Highlights";
-import Nav from "../components/Nav";
-import Study from "../components/Study";
-import Summary from "../components/Summary";
+import LoginNav from "../components/LoginNav";
+import Login from '../components/Login'
 
 const Index = () => {
     return (
         <>
-            <Nav/>
-            <Header/>
-            <Summary/>
-            <Study/>
-            <Highlights/>
+            <LoginNav/>
+            <Login/>
         </>
     )
 }

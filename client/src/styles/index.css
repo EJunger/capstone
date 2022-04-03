@@ -107,7 +107,7 @@ p {
 }
 
 .navItem {
-  margin: 28px;
+  margin: 4rem;
 }
 
 .navImg {
@@ -139,10 +139,14 @@ header {
 }
 
 .subheader {
-  font-size: 23px;
+  font-size: 20px;
   margin: 16px 0 0px;
 }
-
+.sub-subheader{
+  font-size: 21px;
+  font-weight: bold;
+  margin: 16px 0px 13px;
+}
 .btn-secondary {
   background-color: #115277;
   color: white;
@@ -176,14 +180,14 @@ header {
 .summary__container {
   align-items: center;
   display: flex;
-  background-color: #dbdbdb;
   justify-content: center;
   border-radius: 4px;
   padding: 45px;
 }
 
 .summary__row {
-  background-color: #dbdbdb;
+  width: 100%;
+  max-width: 77rem;
 }
 
 .summary__row h1 {
@@ -191,20 +195,17 @@ header {
   text-align: center;
   font-size: 30px;
   margin: 20px 0px 10px;
-  background-color: #dbdbdb;
 }
 
 .summary__row h2 {
   text-align: center;
   font-size: 18px;
-  margin: 0px 0px 10px;
-  background-color: #dbdbdb;
+  margin: 0px 0px 10px; 
 }
 
 .summary__desc {
   display: flex;
   padding: 0 15px;
-  background-color: #dbdbdb;
 }
 
 .summary__img {
@@ -212,43 +213,38 @@ header {
   margin-right: 23px;
   padding: 16px;
   border-radius: 7px;
-  background-color: #dbdbdb;
 }
 
 .summary__sub {
   flex: 1;
-  background-color: #dbdbdb;
+ 
 }
 
 .summary__sub h3 {
   font-weight: bold;
   font-size: 24px;
   margin: 20px 0px 10px;
-  background-color: #dbdbdb;
 }
 
 .summary__sub p {
   line-height: 2rem;
   font-size: 18px;
-  margin: 0px 0px 10px;
-  background-color: #dbdbdb;
+  margin: 0px 0px 10px; 
 }
 
 .summary__subjects {
   font-size: 18px;
   margin: 0px 0px 25px;
   padding: 0px 32px 0px 0px;
-  background-color: #dbdbdb;
 }
 
 .summary__subjects li {
   font-size: 18px;
   padding: 8px 0px;
-  background-color: #dbdbdb;
 }
 
 .imgTest {
-  background-color: #dbdbdb;
+  
 }
 
 .btn-thrid {
@@ -435,8 +431,8 @@ header {
 .zoomHeader {
   font-size: 34px;
   text-align: center;
-  margin-bottom: 55px;
-  margin-top: 55px;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .zoomDiv {
@@ -452,6 +448,7 @@ header {
 .zoomNav {
   max-width: 87rem;
   margin: 0 auto;
+  padding: 3.5rem;
 }
 
 /*=======Post======*/

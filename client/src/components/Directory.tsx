@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import Footer from "./Footer";
 
 const Directory = ({ post }) => {
     return (
+        <>
         <section id="profile">
             <div className="pro--container">
                 <div className="container__column">
@@ -24,6 +26,7 @@ const Directory = ({ post }) => {
                 </div>
             </div>
         </section>
+        </>
     );
 };
 

@@ -29,7 +29,7 @@ const Register = () => {
                             <input type="checkbox" id="tandc" name="tandc" value="tandc"></input>
                                 <label htmlFor="tandc">&nbsp; I agree to the <a href=''>Terms and Conditions</a></label><br></br>
                                 <br></br>
-                                <a className="btn-thrid" href="#register" >Register</a>
+                                <a className="btn-thrid" href="/login" >Register</a>
                         </div>
                     </div>
                 </div>

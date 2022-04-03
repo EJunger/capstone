@@ -22,6 +22,7 @@ const validation_1 = require("../utils/validation");
 const inputs_1 = require("../utils/inputs");
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
+const env_const_1 = require("src/env.const");
 let InputError = class InputError {
 };
 __decorate([
@@ -93,7 +94,7 @@ let UserResolver = class UserResolver {
         return { user };
     }
     async login(email, password, { req }) {
-        const user = await User_1.User.findOne(email);
+        const user = await User_1.User.findOne({ where: { email: email } });
         if (!user) {
             return {
                 errors: [
@@ -120,6 +121,23 @@ let UserResolver = class UserResolver {
             user,
         };
     }
+    CurrentUser({ req }) {
+        if (!req.session.userId) {
+            return null;
+        }
+        return User_1.User.findOne(req.session.userId);
+    }
+    logout({ req, res }) {
+        return new Promise((resolve) => req.session.destroy((err) => {
+            res.clearCookie(env_const_1.COOKIE_NAME);
+            if (err) {
+                console.log(err);
+                resolve(false);
+                return;
+            }
+            resolve(true);
+        }));
+    }
 };
 __decorate([
     (0, type_graphql_1.Mutation)(() => UserResponse),
@@ -138,6 +156,20 @@ __decorate([
     __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "login", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => User_1.User, { nullable: true }),
+    __param(0, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UserResolver.prototype, "CurrentUser", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    __param(0, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UserResolver.prototype, "logout", null);
 UserResolver = __decorate([
     (0, type_graphql_1.Resolver)()
 ], UserResolver);
