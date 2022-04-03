@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Highlights from "../components/Highlights";
 import Nav from "../components/Nav";
@@ -12,6 +13,7 @@ const Home = () => {
             <Summary/>
             <Study/>
             <Highlights/>
+            <Footer/>
         </>
     )
 }

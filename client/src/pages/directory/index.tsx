@@ -2,6 +2,7 @@ import Link from "next/link";
 import data from "./tutorList";
 import Nav from "../../components/Nav";
 import Directory from "../../components/Directory";
+import Footer from "../../components/Footer";
 
 export default function Home({ posts }) {
     return (
@@ -24,6 +25,7 @@ export default function Home({ posts }) {
                     </section>
                 </main>
             </div>
+            <Footer/>
         </>
     );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "../components/Footer";
 import Nav from '../components/Nav'
 const pricing = ({ post }) => {
     return (
@@ -60,6 +61,7 @@ const pricing = ({ post }) => {
                     </div>
                 </div>
             </header>
+            <Footer/>
         </>
     );
 };
