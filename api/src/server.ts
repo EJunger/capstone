@@ -57,7 +57,7 @@ const main = async () => {
         sameSite: 'lax', //csrf
         secure: __prod__, //Cookie only works in https
       },
-      saveUninitialized: false,
+      saveUninitialized: false, //create an empty session, false for no
       secret: 'randostring', //! change me
       resave: false,
     })

@@ -23,7 +23,9 @@ const Login = () => {
                                     <label htmlFor="floatingPassword">Password</label>
                             </div>
                             <br></br>
-                            <a className="btn-thrid" href="#login" >Log In</a>
+                            <label>&nbsp; Don't have an account with us? <a href='register'>Register Now!</a></label><br></br>
+                            <br></br>
+                            <a className="btn-thrid" href="/home" >Log In</a>
                         </div>
                     </div>
                 </div>

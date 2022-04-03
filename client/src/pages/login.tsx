@@ -1,11 +1,11 @@
 import Login from "../components/Login";
-import Nav from "../components/Nav";
+import LoginNav from "../components/LoginNav";
 
 const login = () => {
 
     return (
         <>
-            <Nav />
+            <LoginNav />
             <Login />
         </>
     )
