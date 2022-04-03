@@ -1,21 +1,25 @@
 import Link from "next/link";
 import data from "./tutorList";
 import Nav from "../../components/Nav";
+import Image from "next/image";
 
 export default function Post({ post }) {
   return (
     <>
       <Nav/>
-      <main>
-        <article>
-          <img src={post.ProfilePicture}/>
-          <h1>{post.Name}</h1>
-          <p>{post.Email}</p>
-          <h1>{post.Subjects}</h1>
-          <p>{post.Desc}</p>
-        </article>
-        <a href="/calendar" className="btn btn-primary"> Book Now!</a>
-      </main>
+      <div className="row">
+        <div className="s-left">
+          <img className="p-img" src={post.ProfilePicture} />
+        </div>
+        <div className="s-right">
+          <h1 className="h1font">{post.Name}</h1>
+          <p className="p-post">Subject: {post.Subjects}</p>
+          <p className="p-post"> Email: {post.Email}</p>
+          <p className="p-post">Description: {post.Desc}</p>
+          <p className="p-post" >Pricing: ${post.Pricing}/ hour</p>
+          <a className="btn btn-secondary" href="/calendar" >Book Now!</a>
+        </div>
+      </div>
     </>
   );
 }

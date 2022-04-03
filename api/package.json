@@ -31,6 +31,10 @@
     "apollo": "^2.33.10",
     "apollo-server-express": "^2.25.3",
     "argon2": "^0.28.4",
+<<<<<<< HEAD
+    "body-parser": "^1.19.2",
+=======
+>>>>>>> 2da84d097f4251d0176cb1e78d4ed2cc9ac05b1f
     "connect-redis": "^6.1.3",
     "cors": "^2.8.5",
     "express": "^4.17.3",
