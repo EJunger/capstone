@@ -49,7 +49,7 @@ UserResponse = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], UserResponse);
 let UserResolver = class UserResolver {
-    async register(options, {}) {
+    async register(options, { req }) {
         const errors = (0, validation_1.registerValidation)(options);
         if (errors) {
             return { errors };
@@ -66,8 +66,6 @@ let UserResolver = class UserResolver {
                 email: options.email,
                 fName: options.fName,
                 lName: options.lName,
-                address: options.address,
-                phone: options.phone,
                 password: passwordHash,
             })
                 .returning('*')
@@ -91,9 +89,10 @@ let UserResolver = class UserResolver {
                 };
             }
         }
+        req.session.userId = user.id;
         return { user };
     }
-    async login(email, password, {}) {
+    async login(email, password, { req }) {
         const user = await User_1.User.findOne(email);
         if (!user) {
             return {
@@ -116,6 +115,7 @@ let UserResolver = class UserResolver {
                 ],
             };
         }
+        req.session.userId = user.id;
         return {
             user,
         };

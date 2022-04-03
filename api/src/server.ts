@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import { Context } from './context';
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import { createConnection } from 'typeorm';
@@ -72,18 +71,18 @@ const main = async () => {
     })
   );
 
-  // const apolloServer = new ApolloServer({
-  //   schema: await buildSchema({
-  //     resolvers: [UserResolver],
-  //     validate: false,
-  //   }),
-  //   context: ({ req, res }) => ({ req, res }),
-  // });
+  const apolloServer = new ApolloServer({
+    schema: await buildSchema({
+      resolvers: [UserResolver],
+      validate: false,
+    }),
+    context: ({ req, res }) => ({ req, res }),
+  });
 
-  // await apolloServer.applyMiddleware({
-  //   app,
-  //   cors: false,
-  // });
+  await apolloServer.applyMiddleware({
+    app,
+    cors: false,
+  });
 
   //Zoom
   app.get('/', (_, response) => {

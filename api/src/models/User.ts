@@ -31,14 +31,6 @@ export class User extends BaseEntity {
   @Column()
   lName!: string;
 
-  @Field()
-  @Column()
-  address!: string;
-
-  @Field()
-  @Column()
-  phone!: string;
-
   @Column()
   password!: string;
 

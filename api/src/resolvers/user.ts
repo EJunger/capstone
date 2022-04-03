@@ -46,8 +46,6 @@ export class UserResolver {
           email: options.email,
           fName: options.fName,
           lName: options.lName,
-          address: options.address,
-          phone: options.phone,
           password: passwordHash,
         })
         .returning('*')

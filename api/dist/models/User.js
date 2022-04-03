@@ -45,16 +45,6 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "lName", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "address", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "phone", void 0);
-__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
