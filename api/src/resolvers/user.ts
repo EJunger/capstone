@@ -13,7 +13,7 @@ import {
   Resolver,
 } from 'type-graphql';
 import { getConnection } from 'typeorm';
-import { COOKIE_NAME } from 'src/env.const';
+import { COOKIE_NAME } from '../env.const';
 
 @ObjectType()
 class InputError {
