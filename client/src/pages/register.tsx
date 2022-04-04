@@ -3,29 +3,16 @@ import { Form, Formik } from 'formik';
 import { Box, Button } from '@chakra-ui/core';
 import { Container } from '../components/Container';
 import { InputArea } from '../components/Input';
-import { useMutation } from 'urql';
 import { useRouter } from 'next/router';
+import { useRegisterMutation } from '../generated/graphql';
+import { withUrqlClient } from 'next-urql';
+import { createUrqlClient } from '../middleware/UrqlClientConfig';
 
 interface RegisterProps {}
 
-const REG_MUTATION = `
-mutation Register($username: String!, $fName: String!, $lName: String!, $password: String!, $email: String!) {
-  register(options: { username: $username, fName: $fName, lName: $lName, password: $password, email: $email }) {
-    errors {
-      field
-      message
-    }
-    user {
-      id
-      username
-    }
-  }
-}
-`;
-
 const Register: React.FC<RegisterProps> = ({}) => {
   const router = useRouter();
-  const [, register] = useMutation(REG_MUTATION);
+  const [, register] = useRegisterMutation();
   return (
     <Container>
       <Formik
@@ -36,8 +23,13 @@ const Register: React.FC<RegisterProps> = ({}) => {
           password: '',
           email: '',
         }}
-        onSubmit={async (values, { setErrors }) => {
+        onSubmit={async (values) => {
           const response = await register({ options: values });
+          if (response.data?.register.errors) {
+            response.data.register.errors;
+          } else if (response.data?.register.user) {
+            router.push('/home');
+          }
         }}
       >
         {({ isSubmitting }) => (
@@ -48,10 +40,18 @@ const Register: React.FC<RegisterProps> = ({}) => {
               label="Username"
             />
             <Box mt={4}>
-              <InputArea name="fName" placeholder="fName" label="First Name" />
+              <InputArea
+                name="fName"
+                placeholder="first name"
+                label="First Name"
+              />
             </Box>
             <Box mt={4}>
-              <InputArea name="lName" placeholder="lName" label="Last Name" />
+              <InputArea
+                name="lName"
+                placeholder="last name"
+                label="Last Name"
+              />
             </Box>
             <Box mt={4}>
               <InputArea
@@ -83,5 +83,4 @@ const Register: React.FC<RegisterProps> = ({}) => {
     </Container>
   );
 };
-
-export default Register;
+export default withUrqlClient(createUrqlClient)(Register);
